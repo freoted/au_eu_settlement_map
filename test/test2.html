@@ -37,31 +37,37 @@
       "features": [
       ]
       };
-
+      // test condition
       console.log("no of features in chosenYearObject pre-loop =" + chosenYearObject.features.length)
-
+      // loops through every feature in the original data set
       for (var i = 0; i < locationObject.features.length; i++) {
-        feature = locationObject.features[i];
-        //this is doing something weird - not sure what yet. 
-        chosenYearObject.push(feature);
-        //console.log(feature.properties.year)
-        console.log("no of features in chosenYearObject post-loop =" + chosenYearObject.features.length)
-
+        // assigns i to a new variable (for convenience?)
+        var feature = locationObject.features[i];
+        //pushes each feature where year is less than (slider value) to a new object
+        if (feature.properties.year <= 1791) {
+        chosenYearObject.features.push(feature);
+        }
       };
 
+      // test condition
+      console.log("no of features in chosenYearObject post-loop =" + chosenYearObject.features.length);
+
+      console.log(chosenYearObject);
+
+
       var yearArray = [0, 1788, 1791, 1806];
-      yearArray.push(1977);
+      
       function outputUpdate(vol) {
         document.querySelector('#volume').textContent = vol;
       }
 
       document.getElementById('fader').addEventListener('change', function() {
       sliderIndex = this.value;
+
       year = yearArray[sliderIndex];
-      //console.log(year);
-
-
-    });
+      //test condition
+      console.log(year);
+      });
 
     console.log(yearArray)
 
