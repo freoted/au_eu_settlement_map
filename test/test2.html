@@ -52,31 +52,45 @@
         document.querySelector('#volume').textContent = vol;
       }
 
-      // test condition
-      // console.log("no of features in chosenYearObject pre-loop =" + chosenYearObject.features.length)
-
       // loops through every feature in the original data set
-      for (var i = 0; i < locationObject.features.length; i++) {
+      function pushSelectedYears (year) {
+        for (var i = 0; i < locationObject.features.length; i++) {
         // assigns i to a new variable (for convenience?)
         var feature = locationObject.features[i];
         //pushes each feature where year is less than (slider value) to a new object
-        if (feature.properties.year <= 1791) {
+        if (feature.properties.year <= year) {
         chosenYearObject.features.push(feature);
         }
-      };
+        };
+        return chosenYearObject;
+      }
+
+      // test condition
+      // console.log("no of features in chosenYearObject pre-loop =" + chosenYearObject.features.length)
+
 
       // test condition
       // console.log("no of features in chosenYearObject post-loop =" + chosenYearObject.features.length);
 
       // test condition
-      console.log(chosenYearObject);
 
       //event listener function - detects selected year on slider
       document.getElementById('fader').addEventListener('change', function() {
+        //clears any features from previous years in array
+        chosenYearObject.features = [];
         sliderIndex = this.value;
+        //gets the year from the yearArray
         year = yearArray[sliderIndex];
+
+        pushSelectedYears(year);
         //test condition
-        console.log(year);
+        // console.log(year);
+        console.log(chosenYearObject);
+        //TEST: This should add markers for this chosen year (and under) to the maps
+        //var chosenYearLayer = L.geoJson(chosenYearObject).addTo(map);
+
+        //TODO: incorporate test2 with eu_settlement files
+
       });
 
     </script>
