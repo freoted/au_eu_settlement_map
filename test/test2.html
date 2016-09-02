@@ -1,0 +1,73 @@
+<html>
+  <header>
+    <title>Getting values from JS slider</title>
+    <style type="text/css">
+    </style>
+  </header>
+
+  <body>
+
+    <div id="yearSlider" style="z-index:2" ;>
+      <form>
+        <div align="center">
+          <input type="range" min=1 max=3 value=0 id="fader" step=1 onchange="outputUpdate(yearArray[value])">
+          <span id=volume>1788</span>
+        </div>
+      </form>
+    </div>
+    <script>
+      // Object containing location and properties of each town
+      var locationObject = {
+        "type": "FeatureCollection",
+        "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+
+        "features": [
+          { "type": "Feature", "properties": { "year": 1788, "town": "Sydney"}, "geometry": { "type": "Point", "coordinates": [ 151.2092955, -33.8688197 ] } },
+          { "type": "Feature", "properties": { "year": 1788, "town": "Parramatta"}, "geometry": { "type": "Point", "coordinates": [ 151.001111, -33.815 ] } },
+          { "type": "Feature", "properties": { "year": 1791, "town": "Windsor"}, "geometry": { "type": "Point", "coordinates": [ 150.817222, -33.615 ] } },
+          { "type": "Feature", "properties": { "year": 1806, "town": "Launceston"}, "geometry": { "type": "Point", "coordinates": [ 147.14408750000001, -41.4332215 ] } }
+        ]
+      };
+
+      // After the loop, each feature where the Year is less than chosen Year, will be added to the array in this object
+      var chosenYearObject = {
+      "type": "FeatureCollection",
+      "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+
+      "features": [
+      ]
+      };
+
+      console.log("no of features in chosenYearObject pre-loop =" + chosenYearObject.features.length)
+
+      for (var i = 0; i < locationObject.features.length; i++) {
+        feature = locationObject.features[i];
+        //this is doing something weird - not sure what yet. 
+        chosenYearObject.push(feature);
+        //console.log(feature.properties.year)
+        console.log("no of features in chosenYearObject post-loop =" + chosenYearObject.features.length)
+
+      };
+
+      var yearArray = [0, 1788, 1791, 1806];
+      yearArray.push(1977);
+      function outputUpdate(vol) {
+        document.querySelector('#volume').textContent = vol;
+      }
+
+      document.getElementById('fader').addEventListener('change', function() {
+      sliderIndex = this.value;
+      year = yearArray[sliderIndex];
+      //console.log(year);
+
+
+    });
+
+    console.log(yearArray)
+
+
+    </script>
+
+
+  </body>
+</html>
