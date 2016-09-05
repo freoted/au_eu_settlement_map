@@ -16,7 +16,16 @@
   <body>
     <!-- Div to hold the Leaflet map -->
     <!-- TODO: Make responsive -->
-    <div id = "map" style="width: 1024px; height: 600px;">
+    <div id = "map"></div>
+
+    <!-- accesses the year from yearArray for value -->
+    <div id="yearSlider" style="z-index:2" ;>
+      <form>
+        <div align="center">
+          <input type="range" min=1 max=96 value=0 id="fader" step=1 onchange="outputUpdate(yearArray[value])">
+          <span id=volume>1788</span>
+        </div>
+      </form>
     </div>
 
     <!-- TODO: Add div for slider from test -->
@@ -32,10 +41,13 @@
     <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
 
 
-    <!-- Loads locationObject variable (geoJSON object with all locations) -->
-    <!-- <script src="js/location.js"></script> -->
 
     <!-- Loads main JS script-->
     <script src="js/eu_settlement.js"></script>
 
+    <!-- Loads location Object variable ( object with all locations - this one doesn't work) -->
+    <script src="js/locations.js"></script>
+
+
   </body>
+</html>

@@ -55,9 +55,9 @@
       // loops through every feature in the original data set
       function pushSelectedYears (year) {
         for (var i = 0; i < locationObject.features.length; i++) {
-        // assigns i to a new variable (for convenience?)
+        // assigns i to a new variable feature (for convenience?)
         var feature = locationObject.features[i];
-        //pushes each feature where year is less than (slider value) to a new object
+        //pushes each feature where year is less than or equal to (slider value) to a new object
         if (feature.properties.year <= year) {
         chosenYearObject.features.push(feature);
         }
@@ -74,14 +74,14 @@
 
       // test condition
 
-      //event listener function - detects selected year on slider
+      //event listener function - 1. detects selected year on slider
       document.getElementById('fader').addEventListener('change', function() {
-        //clears any features from previous years in array
+        //2. clears any features from previous years in array
         chosenYearObject.features = [];
         sliderIndex = this.value;
-        //gets the year from the yearArray
+        //3. gets the year from the yearArray
         year = yearArray[sliderIndex];
-
+        // Finds all values <= slider year and pushes them to a new object
         pushSelectedYears(year);
         //test condition
         // console.log(year);

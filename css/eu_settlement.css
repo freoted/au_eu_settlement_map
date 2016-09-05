@@ -1,0 +1,28 @@
+#map {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* map slider */
+#yearSlider {
+	position: absolute;
+	font-family: 'Noto', serif;
+	height:30px;
+  top: 30px;
+  left: 850px;
+	font-size:1.2em;
+}
+
+
+/*Media queries*/
+
+/*removes hover-over on slider in ie*/
+::-ms-tooltip
+{
+    display: none;
+}
