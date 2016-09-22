@@ -2,6 +2,8 @@
 // Global variables
 // =====================================
 
+var map;
+
 // Array with each unique year of settlement
 var yearArray = [0, 1788,	1791,	1798,	1803,	1804,	1806,	1807,	1808,	1812,	1813,	1814,
   1818,	1820,	1821,	1823,	1824,	1825,	1826,	1827,	1829,	1830,	1831,	1832,	1833,	1834,
@@ -19,6 +21,7 @@ var chosenYearObject = {
   ]
 };
 
+
 // =====================================
 // Functions
 // =====================================
@@ -26,7 +29,7 @@ var chosenYearObject = {
 // For map: function to initialise the map
 function initmap() {
   var stamen = new L.StamenTileLayer("watercolor");
-  var map = new L.Map("map", {
+  map = new L.Map("map", {
     center: new L.LatLng(-25.028401, 134.190508),
     zoom: 4,
     layers: stamen
@@ -57,20 +60,25 @@ function pushSelectedYears (year) {
 // =====================================
 initmap();
 
-// L.geoJson(locationObject).addTo(map);
+// new L.geoJson(locationObject).addTo(map);
 
-document.getElementById('yearSlider').addEventListener('change', function() {
-  //2. clears any features from previous years in array
-  chosenYearObject.features = [];
-  sliderIndex = this.value;
-  //3. gets the year from the yearArray
-  year = yearArray[sliderIndex];
-  // Finds all values <= slider year and pushes them to a new object
-  pushSelectedYears(year);
-  ///test condition
-  /// console.log(year);
-  console.log(chosenYearObject);
-  // not working - investigate tomorrow
-  L.geoJson(chosenYearObject).addTo(map);
+var year1908 = new L.geoJson(locationObject).addTo(map);
 
-});
+
+
+
+// document.getElementById('yearSlider').addEventListener('change', function() {
+//   //2. clears any features from previous years in array
+//   chosenYearObject.features = [];
+//   sliderIndex = this.value;
+//   //3. gets the year from the yearArray
+//   year = yearArray[sliderIndex];
+//   // Finds all values <= slider year and pushes them to a new object
+//   pushSelectedYears(year);
+//   ///test condition
+//   /// console.log(year);
+//   console.log(chosenYearObject);
+//   // not working - investigate tomorrow
+//   L.geoJson(chosenYearObject).addTo(map);
+//
+// });
