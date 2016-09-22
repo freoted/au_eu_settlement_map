@@ -62,23 +62,23 @@ initmap();
 
 // new L.geoJson(locationObject).addTo(map);
 
-var year1908 = new L.geoJson(locationObject).addTo(map);
+// var year1908 = new L.geoJson(locationObject).addTo(map);
 
 
 
 
-// document.getElementById('yearSlider').addEventListener('change', function() {
-//   //2. clears any features from previous years in array
-//   chosenYearObject.features = [];
-//   sliderIndex = this.value;
-//   //3. gets the year from the yearArray
-//   year = yearArray[sliderIndex];
-//   // Finds all values <= slider year and pushes them to a new object
-//   pushSelectedYears(year);
-//   ///test condition
-//   /// console.log(year);
-//   console.log(chosenYearObject);
-//   // not working - investigate tomorrow
-//   L.geoJson(chosenYearObject).addTo(map);
-//
-// });
+document.getElementById('yearSlider').addEventListener('change', function() {
+  //2. clears any features from previous years in array
+  chosenYearObject.features = [];
+  sliderIndex = this.value;
+  //3. gets the year from the yearArray
+  year = yearArray[sliderIndex];
+  // Finds all values <= slider year and pushes them to a new object
+  pushSelectedYears(year);
+  ///test condition
+  /// console.log(year);
+  // console.log(chosenYearObject);
+  // not working - investigate tomorrow
+  L.geoJson(chosenYearObject).addTo(map);
+
+});
