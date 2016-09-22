@@ -64,22 +64,20 @@ function pushSelectedYears (year) {
 // =====================================
 initmap();
 
-// new L.geoJson(locationObject).addTo(map);
-
-// var year1908 = new L.geoJson(locationObject).addTo(map);
-
 var currentMarkers = L.geoJson(chosenYearObject).addTo(map);
 
 
 
 document.getElementById('yearSlider').addEventListener('change', function() {
-  //2. clears any features from previous years in array
+  //2. remove previous layers
   map.removeLayer(currentMarkers);
   sliderIndex = this.value;
   //3. gets the year from the yearArray
   year = yearArray[sliderIndex];
   // Finds all values <= slider year and pushes them to a new object
   pushSelectedYears(year);
-  // var currentMarkers = L.geoJson(chosenYearObject).addTo(map);
+  // L.geoJson(chosenYearObject).addTo(map);
+  currentMarkers = L.geoJson(chosenYearObject).addTo(map);
+
 
 });
