@@ -7,18 +7,21 @@
 
   <body>
     <!-- accesses the year from yearArray for value -->
-    <div id="yearSlider" style="z-index:2" ;>
+    <div id="yearSliderDiv" style="z-index:2" ;>
       <form>
         <div align="center">
-          <input type="range" min=1 max=3 value=0 id="fader" step=1 onchange="outputUpdate(yearArray[value])">
-          <span id=volume>1788</span>
+          <input type="range"
+          min=1 max=3 value=0
+          id="yearSlider" step=1
+          onchange="updateYear(yearArray[value])">
+          <span id=displayedYear>1788</span>
         </div>
       </form>
     </div>
     <script>
-      // =====================================
-      // Global variables
-      // =====================================
+// =====================================
+// Global variables
+// =====================================
 
       var yearArray = [0, 1788, 1791, 1806];
 
@@ -35,7 +38,7 @@
         ]
       };
 
-      // After the loop, each feature where the Year is less than chosen Year, will be added to the array in this object
+      // After the loop, each feature where the year is less than year selected in the slider, will be added to the array in this object
       var chosenYearObject = {
         "type": "FeatureCollection",
         "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
@@ -43,13 +46,13 @@
         "features": [
         ]
       };
-      // =====================================
-      // Functions
-      // =====================================
+// =====================================
+// Functions
+// =====================================
 
       //this function updates the text value when you move the slider so year is displayed under the slider
-      function outputUpdate(vol) {
-        document.querySelector('#volume').textContent = vol;
+      function updateYear(year) {
+        document.querySelector('#displayedYear').textContent = year;
       }
 
       // loops through every feature in the original data set
@@ -75,7 +78,7 @@
       // test condition
 
       //event listener function - 1. detects selected year on slider
-      document.getElementById('fader').addEventListener('change', function() {
+      document.getElementById('yearSlider').addEventListener('change', function() {
         //2. clears any features from previous years in array
         chosenYearObject.features = [];
         sliderIndex = this.value;
@@ -83,10 +86,10 @@
         year = yearArray[sliderIndex];
         // Finds all values <= slider year and pushes them to a new object
         pushSelectedYears(year);
-        //test condition
-        // console.log(year);
+        ///test condition
+        /// console.log(year);
         console.log(chosenYearObject);
-        //TEST: This should add markers for this chosen year (and under) to the maps
+        ///TEST: This should add markers for this chosen year (and under) to the maps
         //var chosenYearLayer = L.geoJson(chosenYearObject).addTo(map);
 
         //TODO: incorporate test2 with eu_settlement files

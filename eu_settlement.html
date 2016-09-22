@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
 
     <!-- Link to normalized style sheet -->
-    <link rel = "stylesheet" href = "normalize.css">
+    <link rel = "stylesheet" href = "css/normalize.css">
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="css/eu_settlement.css">
   </head>
@@ -34,11 +34,11 @@
     <div id = "map"></div>
 
     <!-- accesses the year from yearArray for value -->
-    <div id="yearSlider" style="z-index:2" ;>
+    <div id="yearSliderDiv" style="z-index:2" ;>
       <form>
         <div align="center">
-          <input type="range" min=1 max=96 value=0 id="fader" step=1 onchange="outputUpdate(yearArray[value])">
-          <span id=volume>1788</span>
+          <input type="range" min=1 max=96 value=0 id="yearSlider" step=1 onchange="updateYear(yearArray[value])">
+          <span id=displayedYear>1788</span>
         </div>
       </form>
     </div>
@@ -55,8 +55,6 @@
 
     <!-- Loads Stamen map tiles script-->
     <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
-
-
 
     <!-- Loads main JS script-->
     <script src="js/eu_settlement.js"></script>

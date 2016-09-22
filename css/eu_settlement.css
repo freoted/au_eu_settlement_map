@@ -16,7 +16,7 @@ a {
 
 #map {
     position: absolute;
-    top: 150px;
+    top: 0px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -24,13 +24,17 @@ a {
     padding: 0;
 }
 
-/* map slider */
-#yearSlider {
-	position: absolute;
-	font-family: 'Noto', serif;
-	height:30px;
+#yearSliderDiv {
+  position: absolute;
+  height:30px;
   top: 30px;
   left: 850px;
+
+}
+
+/* map slider */
+#yearSlider {
+	font-family: 'Noto', serif;
 	font-size:1.2em;
 }
 
