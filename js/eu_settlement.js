@@ -25,7 +25,9 @@ var chosenYearObject = {
   ]
 };
 
-
+// var purpleIcon = L.icon({
+//   iconUrl: "img/purple_marker.png"
+// })
 // =====================================
 // Functions
 // =====================================
@@ -41,6 +43,12 @@ function initmap() {
 }
 
 //For slider: this function updates the text value when you move the slider so year is displayed under the slider
+//function for pop up markers
+function popUpInfo (feature, layer) {
+	layer.bindPopup(feature.properties.town + ": founded in " + feature.properties.year);
+};
+
+
 function updateYear(year) {
   document.querySelector('#displayedYear').textContent = year;
 }
@@ -58,14 +66,26 @@ function pushSelectedYears (year) {
   return chosenYearObject;
 }
 
+//function to load custom markers
+function customIcons(feature, latlng) {
+var myIcon = L.icon({
+  iconUrl: "img/purple_marker1.png",
+  iconSize: [13,13]
+	});
+return L.marker(latlng, {icon: myIcon});
+};
+
 
 // =====================================
 // Calling the functions
 // =====================================
 initmap();
 
-var currentMarkers = L.geoJson(chosenYearObject).addTo(map);
-
+var currentMarkers = L.geoJson(chosenYearObject, {
+  //calls functions to add custom icons and pop up windows to map
+  pointToLayer: customIcons,
+  onEachFeature: popUpInfo
+}).addTo(map);
 
 
 document.getElementById('yearSlider').addEventListener('change', function() {
@@ -77,7 +97,8 @@ document.getElementById('yearSlider').addEventListener('change', function() {
   // Finds all values <= slider year and pushes them to a new object
   pushSelectedYears(year);
   // L.geoJson(chosenYearObject).addTo(map);
-  currentMarkers = L.geoJson(chosenYearObject).addTo(map);
-
-
+  currentMarkers = L.geoJson(chosenYearObject, {
+    pointToLayer: customIcons,
+    onEachFeature: popUpInfo
+  }).addTo(map);
 });
