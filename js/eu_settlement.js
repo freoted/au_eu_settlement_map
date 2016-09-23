@@ -65,16 +65,21 @@ function pushSelectedYears (year) {
   };
   return chosenYearObject;
 }
+// style function
+// function style(feature) {
+// 	return {
+// 		"color": "red",
+// 		"stroke": false
+// 	};
 
 //function to load custom markers
 function customIcons(feature, latlng) {
-var myIcon = L.icon({
-  iconUrl: "img/purple_marker1.png",
-  iconSize: [13,13]
-	});
-return L.marker(latlng, {icon: myIcon});
+  var myCircle = L.circleMarker({
+    fillColor: "red",
+  	});
+return L.circleMarker(latlng, {icon: myCircle});
 };
-
+// return L.circleMarker(latlng, {icon: myIcon});
 
 // =====================================
 // Calling the functions
