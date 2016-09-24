@@ -1,33 +1,51 @@
 <!DOCTYPE html>
-<html>
+<!-- test git comment - is head in right place?-->
+<html lang="en">
   <head>
-    <!-- Link to Google fonts -->
-    <!-- TODO: Choose font -->
-    <!-- TODO: fix error - showing bad request at present -->
-    <!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto"> -->
 
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>European settlement of Australian towns</title>
+    <script src="https://use.fontawesome.com/597976b8a1.js"></script>
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <!-- TODO: Check if jquery does need to load here or can wait till end. Presently loaded twice -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
     <!-- Link to Leaflet css -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
-
     <!-- Link to normalized style sheet -->
     <link rel = "stylesheet" href = "css/normalize.css">
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="css/eu_settlement.css">
+  	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <div class = "wrap">
-      <!-- <header class = "main-header">
-        <div class = "container">
-          <h1 class = "name"><a href = "#">Welcome to North Perth</a></h1>
-          <ul class = "main-nav">
-            <li><a href="#">eating out</a></li>
-            <li><a href="#">recreation</a></li>
-            <li><a href="#">families</a></li>
-            <li><a href="#">seniors</a></li>
-          </ul>
-        </div>
-      </header> -->
 
+    <!--   navigation bar -->
+  	<nav id = "navigation-Bar" class="navbar navbar-inverse navbar-static-top">
+  		<div class="container">
+  			<div class="navbar-header">
+  				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  					<span class="sr-only">Toggle navigation</span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  				</button>
+  				<a class="navbar-brand" href="http://www.bluedirtmaps.com/">Blue Dirt Maps</a>
+  			</div>
+  			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  				<ul class="nav navbar-nav navbar-right">
+  					<li><a href="http://www.bluedirtmaps.com/blog/tag/google-maps-api/">Google Maps</a></li>
+  					<li><a href="http://www.bluedirtmaps.com/blog/tag/illustrator/">Illustrator maps</a></li>
+  					<li><a href="http://www.bluedirtmaps.com/contact.html">Contact</a></li>
+  				</ul>
+          <ul class="nav navbar-nav navbar-right social">
+            <li><a href="http://www.twitter.com/rosiembell"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+          </ul>
+  			</div>
+  		</div>
+  	</nav>
+
+    <div class = "wrap">
     <!-- Div to hold the Leaflet map -->
     <!-- TODO: Make responsive -->
     <div id = "map"></div>
@@ -43,27 +61,20 @@
     </div>
     </div>
 
-    <!-- TODO: Add div for slider from test -->
+	<!--- Scripts---->
+  <!-- all external scripts-->
+  <!--Loads jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    <!-- all external scripts-->
-    <!--Loads jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Loads Leaflet API nb must load BEFORE Stamen script for it to work-->
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
 
-    <!-- Loads Leaflet API nb must load BEFORE Stamen script for it to work-->
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+  <!-- Loads Stamen map tiles script-->
+  <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
 
-    <!-- Loads Stamen map tiles script-->
-    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+  <!-- Loads location Object variable ( object with all locations ) -->
+  <script src="js/locations.js"></script>
 
-    <!-- Loads location Object variable ( object with all locations ) -->
-    <script src="js/locations.js"></script>
-    <script src="js/allYears.js"></script>
-
-
-    <!-- Loads main JS script-->
-    <script src="js/eu_settlement.js"></script>
-
-
-
+  <!-- Loads main JS script-->
+  <script src="js/eu_settlement.js"></script>
   </body>
-</html>
