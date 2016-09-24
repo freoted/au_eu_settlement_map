@@ -4,6 +4,7 @@
 
 var map;
 
+
 // Array with each unique year of settlement
 var yearArray = [0, 1788,	1791,	1798,	1803,	1804,	1806,	1807,	1808,	1812,	1813,	1814,
   1818,	1820,	1821,	1823,	1824,	1825,	1826,	1827,	1829,	1830,	1831,	1832,	1833,	1834,
@@ -72,7 +73,7 @@ function styleMarker(feature) {
   return {
     fillColor: "purple",
     color: "black",
-    fillOpacity: "1"
+    fillOpacity: "0.8"
   }
 }
 
