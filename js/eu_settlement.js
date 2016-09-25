@@ -79,7 +79,7 @@ function styleMarker(feature) {
 
 //function to load custom markers
 function customIcons(feature, latlng) {
-  return L.circleMarker(latlng, styleMarker(feature));
+  return L.circleMarker(latlng, feature);
 };
 // return L.circleMarker(latlng, {icon: myIcon});
 
@@ -106,6 +106,7 @@ document.getElementById('yearSlider').addEventListener('change', function() {
   // L.geoJson(chosenYearObject).addTo(map);
   currentMarkers = L.geoJson(chosenYearObject, {
     pointToLayer: customIcons,
+    style: styleMarker,
     onEachFeature: popUpInfo
   }).addTo(map);
 });
