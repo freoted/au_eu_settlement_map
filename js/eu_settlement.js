@@ -80,13 +80,13 @@ function styleMarker(feature) {
 }
 
 //function to load custom markers
-function customIcons(feature, latlng) {
-  return L.circleMarker(latlng, feature).setRadius(5);
+function circleMarker(feature, latlng) {
+  return L.circleMarker(latlng, feature).setRadius(7);
 }
 
 function addMarkersToMap() {
   currentMarkers = L.geoJson(chosenYearObject, {
-    pointToLayer: customIcons,
+    pointToLayer: circleMarker,
     style: styleMarker,
     onEachFeature: popUpInfo
   }).addTo(map);
