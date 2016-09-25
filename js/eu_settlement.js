@@ -26,6 +26,8 @@ var chosenYearObject = {
   ]
 };
 
+var currentMarkers;
+
 // var purpleIcon = L.icon({
 //   iconUrl: "img/purple_marker.png"
 // })
@@ -79,21 +81,25 @@ function styleMarker(feature) {
 
 //function to load custom markers
 function customIcons(feature, latlng) {
-  return L.circleMarker(latlng, feature);
-};
-// return L.circleMarker(latlng, {icon: myIcon});
+  return L.circleMarker(latlng, feature).setRadius(5);
+}
+
+function addMarkersToMap() {
+  currentMarkers = L.geoJson(chosenYearObject, {
+    pointToLayer: customIcons,
+    style: styleMarker,
+    onEachFeature: popUpInfo
+  }).addTo(map);
+}
+
 
 // =====================================
 // Calling the functions
 // =====================================
 initmap();
 
-var currentMarkers = L.geoJson(chosenYearObject, {
-  //calls functions to add custom icons and pop up windows to map
-  pointToLayer: customIcons,
-  onEachFeature: popUpInfo
-}).addTo(map);
-
+// This adds the markers currently in chosenYearObject (the 1788 ones) to the map
+addMarkersToMap();
 
 document.getElementById('yearSlider').addEventListener('change', function() {
   //2. remove previous layers
@@ -104,9 +110,5 @@ document.getElementById('yearSlider').addEventListener('change', function() {
   // Finds all values <= slider year and pushes them to a new object
   pushSelectedYears(year);
   // L.geoJson(chosenYearObject).addTo(map);
-  currentMarkers = L.geoJson(chosenYearObject, {
-    pointToLayer: customIcons,
-    style: styleMarker,
-    onEachFeature: popUpInfo
-  }).addTo(map);
+  addMarkersToMap();
 });
