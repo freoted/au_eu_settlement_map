@@ -79,7 +79,7 @@ function styleMarker(feature) {
   }
 }
 
-//function to load custom markers
+//function to choose marker type
 function circleMarker(feature, latlng) {
   return L.circleMarker(latlng, feature).setRadius(7);
 }
